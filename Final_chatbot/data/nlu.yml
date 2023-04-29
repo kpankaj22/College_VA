@@ -1,0 +1,379 @@
+version: "3.1"
+nlu:
+- intent: change_information
+  examples: |
+    - I want to change [branch](d_info)
+    - Edit [division](d_info)
+    - change [sem](d_info)
+    - [branch](d_info)
+    - [division](d_info)
+    - [sem](d_info)
+    - [semester](d_info)
+- intent: greet
+  examples: |
+    - hey
+    - hello
+    - hi
+    - hello there
+    - good morning
+    - good evening
+    - moin
+    - hey there
+    - let's go
+    - hey dude
+    - goodmorning
+    - goodevening
+    - good afternoon
+    - hii
+- intent: affirm
+  examples: |
+    - yes
+    - y
+    - indeed
+    - of course
+    - that sounds good
+    - correct
+- intent: goodbye
+  examples: |
+    - cu
+    - good by
+    - cee you later
+    - good night
+    - bye
+    - goodbye
+    - have a nice day
+    - see you around
+    - bye bye
+    - see you later
+    - byeeee
+- intent: deny
+  examples: |
+    - no
+    - n
+    - never
+    - I don't think so
+    - don't like that
+    - no way
+    - not really
+- intent: ask_time_table
+  examples: |
+    - what is my current lecture?
+    - where is my next lecture?
+    - what is my next lecture
+    - what is my time table?
+    - tell me my lecture?
+    - when is [Rohit Barve](prof_name) next lecture?
+    - will there be anymore [Vidya Chitre](prof_name) lecture this week?
+    - is there any lecture of [AjitKumar Khachane](prof_name)?
+    - when is [OS](subject) next lecture?
+    - will there be anymore [Automata Theorey](subject) lecture this week?
+    - is there any lecture of [Operating System](subject) this week?
+    - when is [Bhanu Tekwani](prof_name) next lecture?
+    - will there be anymore [Rasika Ransing](prof_name) lecture this week?
+    - when is [Shruti Agarwal](prof_name) next lecture?
+    - will there be anymore [Santosh Tamboli](prof_name) lecture this week?
+    - is there any lecture of [Shashikant Mahajan](prof_name)?
+    - when is [COA](subject) next lecture?
+    - will there be anymore [EM](subject) lecture this week?
+    - is there a [Python Lab](subject) this week?
+    - who is [bhanu tekwani](prof_name)
+    - Is there [COA](subject) on [Tuesday](day)
+    - - will there be anymore [Santosh Tamboli](prof_name) lecture on [Monday](subject)?
+- intent: tt_inform
+  examples: |
+    - My branch is [INFT](branch)
+    - My branch is [CMPN](branch)
+    - My branch is [EXTC](branch)
+    - My branch is [ETRX](branch)
+    - My branch is [BIOM](branch)
+    - My branch is [Information Technology](branch)
+    - My branch is [Computer Science](branch)
+    - My branch is [Electtronics and Telecommunication](branch)
+    - My branch is [Electronics](branch)
+    - My branch is [Biomedical](branch)
+    - I'm studying in semester [1](sem)
+    - I'm studying in semester [2](sem)
+    - I'm studying in semester [3](sem)
+    - I'm studying in semester [4](sem)
+    - I'm studying in semester [5](sem)
+    - I'm studying in semester [6](sem)
+    - I'm studying in semester [7](sem)
+    - I'm studying in semester [8](sem)
+    - I study in sem [6](sem) [INFT](branch) - [A](division)
+    - sem [8](sem) [CMPM](branch)-[A](division)
+    - currently studying in sem [4](sem) [Electronics](branch) -  [B](division)
+    - I belong to division [A](division)
+    - I belong to division [B](division)
+    - I study in division [A](division)
+    - I study in division [B](division)
+    - [Information Technology](branch)
+    - [b](division)
+    - my division is [B](division)
+    - My semester is [3](sem)
+    - MY branch is [INFT](branch)
+    - I am studying in division [A](division)
+    - I study in sem [3](sem)
+    - I study in semester [9](sem)
+    - I study in semester [2](sem)
+    - I study in [Info Tech](sem)
+- intent: ask_professor_domain
+  examples: |
+    - who can help me with [AI](subject)
+    - I want help with [DBMS](subject)
+    - I am finding difficulty understanding [BDA](subject)
+    - Who teaches [Artificial Intelligence](subject)
+    - Who teaches [Python](subject)
+    - who teaches [Java](subject)
+    - who teaches [AT](subject)
+    - who teaches [Automata Theory](subject)
+    - who teaches [IOT](subject)
+    - who teaches [Internet of Things](subject)
+    - who teaches [IOE](subject)
+    - who teaches [Internet of Everything](subject)
+    - who teaches [BDA](subject)
+    - who teaches [Big Data Analytics](subject)
+    - who teaches [CC](subject)
+    - who teaches [Cloud Computing]](subject)
+    - who teaches [DBMS](subject)
+    - who teaches [Database Management System](subject)
+    - who teaches [DSA](subject)
+    - who teaches [Data Structure and Algorithm](subject)
+    - who teaches [Blockchain](subject)
+    - who teaches [OS](subject)
+    - who teaches [Operating System](subject)
+    - Which professor can help me with [OOPs](subject)?
+    - Who can help me with [DBMS](subject)?
+    - who is [Samuel Jacob](prof_name)
+    - who is [Vidya Chitre](prof_name)?
+    - tell me about [Sruti Agarwal](prof_name)?
+    - tell me about [Vidya Chitre](prof_name)
+    - tell me about [Santosh Tamboli](prof_name)
+    - tell me about [vidya chitre](prof_name)
+    - I want help with [WT](subject)
+    - How can I contact Neha [Kudu](prof_name)
+    - How can I contact [Neha Kudu](prof_name)
+    - How can I contact  [Shruti Agarwal](prof_name)
+- intent: ask_result
+  examples: |
+    - Where can I find my marksheet?
+    - Where can I find my scoresheet?
+    - Where can I see my result?
+- intent: ask_railwayconcession
+  examples: |
+    - Does our college provide railway concession?
+    - How to apply for railway concession?
+    - Where can I apply for railway concession?
+
+- intent: ask_courses_offered
+  examples: |
+    - what are the different courses offered at VIT?
+    - What kind of courses do you offer?
+    - Can you provide me with a list of courses available at your college?
+    - I'm interested in applying to your college. What are the courses offered?
+    - Can you tell me more about the academic programs at your college?
+    - What majors and minors are available at your college?
+    - Are there any specialized courses or programs at your college?
+    - Do you offer a degree in [electrical engineering](branch)?
+    - Are there any courses related to [civil engineering](branch)?
+    - Can you tell me if you have a [mechanical engineering(branch) program?
+    - Is there a [computer engineering(branch) major at your college?
+    - What kind of engineering branch does your college offer?
+    - I'm interested in studying [chemical engineering](branch) . Is that a program you offer?
+    - Are there any [aerospace engineering](branch) courses available at your college?
+    - I'm curious if you have a program for [environmental engineering](branch)?
+    - Can you provide information about your [biomedical engineering] program(branch)?
+    - Do you offer any engineering courses related to [renewable energy](branch) ?
+
+- intent: ask_administrative_office
+  examples: |
+    - Where is [Principal Office](office_location) located?
+    - Where is [INFT](office_location) department located?
+    - Find the location of the Stationery(office_location) shop.
+    - Where is the [Vprint](office_location) located?
+    - Can you tell me where to find the department of [Humanities](office_location) office?
+    - I need to go to the [FE](office_location) department. Where is it located?
+    - Where can I find the department of the [Electronics Engineering](office_location?
+    - Can you give me directions to the [Technical Advisor](office_location) office?
+    - Where is the [Exam Cell](office_location) located?
+    - Can you tell me where to find the department of [Biomedical Engineering](office_location) office?
+    - I need to go to the [Library](office_location) . Where is it located?
+    - Where is the [Scholarship](office_location) office located?
+
+- synonym: Automata Theorey
+  examples: |
+    - AT
+    - Automata Theorey
+    - Automata Theory
+    - Automata
+- synonym: Operating System
+  examples: |
+    - OS
+    - Operating System
+- synonym: Computer Organization and Architecture
+  examples: |
+    - Computer Organization and Architecture
+    - COA
+- synonym: INFT
+  examples: |
+    - Information Technology
+    - Info tech
+    - IT
+    - INFT
+- synonym: Engineering Mathematics
+  examples: |
+    - EM
+    - Engineering Mathematics
+- synonym: CMPN
+  examples: |
+    - Comps
+    - Computer Engineering
+    - CMPN
+- synonym: EXTC
+  examples: |
+    - Electronics and Telecommunication Engineering
+    - EXTC
+- synonym: ETRX
+  examples: |
+    - Electronics Engineering
+    - Electronics
+    - ETRX
+- synonym: BIOM
+  examples: |
+    - Biomedical Engineering
+    - Biomed
+    - BIOM
+- synonym: sem
+  examples: |
+    - sem
+    - semester
+- lookup: branch
+  examples: |
+    - INFT
+    - CMPN
+    - EXTC
+    - ETRX
+    - BIOM
+    - Information Technology
+    - Computer Science
+    - Electtronics and Telecommunication
+    - Electronicsbranch
+    - Biomedical
+    - Info tech
+    - Comps
+    - data/engineering_degress.txt
+- lookup: division
+  examples: |
+    - A
+    - B
+- lookup: sem
+  examples: |
+    - 1
+    - 2
+    - 3
+    - 4
+    - 5
+    - 6
+    - 7
+    - 8
+- lookup: subject
+  examples: |
+    - OS
+    - AT
+    - Automata Theory
+    - Operating System
+    - COA
+    - Computer Organisation and Architecture
+    - EM
+    - Engineering Mathematics
+    - Unix lab
+    - Python lab
+    
+- lookup: prof_name
+  examples: |
+    - Rohit Barve
+    - Bhanu Tekwani
+    - Vidya Chitre
+    - Santosh Tamboli
+    - Shashikant Mahajan
+    - Rasika Ransing
+    - AjitKumar Khachane
+    - Shruti Agarwal
+    - data/prof_name.txt
+- lookup: day
+  examples: |
+    - Monday
+    - Tuesday
+    - Wednesday
+    - Thursday
+    - Friday
+    - Saturday
+    - Sunday
+
+- lookup: office_location
+  examples: |
+    - Library
+    - Scholarship Office
+    - Exam Cell
+    - INFT
+    - Biomedical
+    - Electronics
+    - Technical Advisor
+    - Chief Academic Officer
+    - Principal
+    - Humanities
+    - Mathematics
+    - Appilied Sciences
+    - First Year
+    - Vprint
+    - Stationery
+
+- lookup: courses
+  examples: |
+    - INFT
+    - CMPN
+    - EXTC
+    - ETRX
+    - BIOM
+    - Information Technology
+    - Computer Science
+    - Electtronics and Telecommunication
+    - Electronicsbranch
+    - Biomedical
+    - Info tech
+    - Comps
+    - Mechanical Engineering
+    - Civil Engineering
+    - data/engineering_degress.txt
+    - Aeronautical Engineering
+    - Industrial Engineering
+    - Aerospace Engineering
+    - Marine Engineering
+    - Artificial Intelligence and Machine Learning
+    - Mechanical Engineering
+    - Automobile Engineering
+    - Mechatronics Engineering
+    - Biotechnology Engineering
+    - Biomedical Engineering
+    - Ceramic Engineering
+    - Mining Engineering
+    - Chemical Engineering
+    - Nanotechnology
+    - Civil Engineering
+    - Petroleum Engineering
+    - Communications Engineering
+    - Power Engineering
+    - Computer Science Engineering
+    - Production Engineering
+    - Construction Engineering
+    - Robotics Engineering
+    - Data Science
+    - Structural Engineering
+    - Electrical Engineering
+    - Telecommunication Engineering
+    - Electronics & Communication Engineering
+    - Tool Engineering
+    - Electronics Engineering
+    - Textile Engineering
+    - Environmental Engineering
+    - Transportation Engineering
+    - Food Technology

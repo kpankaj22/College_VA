@@ -1,0 +1,11 @@
+
+version: "3.1"
+stories:
+- story: interactive_story_1
+  steps:
+  - intent: greet
+  - action: action_say_hello
+  - slot_was_set:
+    - login_status: false
+  - intent: ask_time_table
+  - action: utter_please_login

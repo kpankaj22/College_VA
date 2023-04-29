@@ -1,0 +1,52 @@
+version: "3.1"
+
+rules:
+  - rule: initial login
+    steps:
+    - intent: greet
+    - action: action_say_hello
+
+  - rule: Say goodbye anytime the user says goodbye
+    steps:
+    - intent: goodbye
+    - action: utter_goodbye
+
+  - rule: send mesaage  to user is not logged in
+    condition:
+    - slot_was_set:
+      - login_status : false
+    steps:
+    - intent: ask_time_table
+    - action: utter_please_login
+
+  - rule: activate time table form if logged in
+    condition:
+    - slot_was_set:
+      - login_status : true
+    steps:
+    - intent: ask_time_table
+    - action: action_time_table
+    
+  - rule: submit time table form
+    condition:
+    - active_loop: time_table_form
+    steps:
+    - action: time_table_form
+    - active_loop: null
+    - slot_was_set: 
+      - requested_slot: null
+    - action: utter_details_affirm
+    - or:
+      - intent: affirm
+      - intent: deny
+    - action: action_upload_user_details
+    - action: action_time_table
+
+
+  
+    
+
+# subah utke ek kar dena yeh direct action likh dena niche aur d_a ke value baaki action run karna
+
+
+  

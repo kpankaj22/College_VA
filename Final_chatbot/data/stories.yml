@@ -1,0 +1,125 @@
+version: "3.1"
+
+stories:
+
+# - story: interactive_story_1
+#   steps:
+#   - intent: ask_time_table
+#   - action: time_table_form
+#   - active_loop: time_table_form
+#   - slot_was_set:
+#     - requested_slot: branch
+#   - slot_was_set:
+#     - branch: INFT
+#   - slot_was_set:
+#     - requested_slot: division
+#   - slot_was_set:
+#     - division: A
+#   - slot_was_set:
+#     - requested_slot: sem
+#   - slot_was_set:
+#     - sem: '3'
+#   - slot_was_set:
+#     - requested_slot: null
+#   - active_loop: null
+#   - action: action_query_time_table
+#   - intent: goodbye
+#   - action: utter_goodbye
+
+# - story: interactive_story_1
+#   steps:
+#   - intent: ask_time_table
+#   - action: time_table_form
+#   - active_loop: time_table_form
+#   - slot_was_set:
+#     - requested_slot: branch
+#   - slot_was_set:
+#     - branch: INFT
+#   - slot_was_set:
+#     - branch: INFT
+#   - slot_was_set:
+#     - requested_slot: division
+#   - slot_was_set:
+#     - division: B
+#   - slot_was_set:
+#     - division: B
+#   - slot_was_set:
+#     - requested_slot: sem
+#   - slot_was_set:
+#     - sem: '9'
+#   - slot_was_set:
+#     - sem: null
+#   - slot_was_set:
+#     - requested_slot: sem
+#   - slot_was_set:
+#     - sem: '2'
+#   - slot_was_set:
+#     - sem: '2'
+#   - slot_was_set:
+#     - requested_slot: null
+#   - active_loop: null
+#   - action: action_query_time_table
+
+# - story: student asking for railway concession or scoresheet
+#   steps:
+#   - intent: ask_professor_domain
+#   - action: action_professor_domain
+
+
+- story: interactive_story_1
+  steps:
+  - intent: greet
+  - action: action_say_hello
+
+- story: ask prof details
+  steps:
+  - intent: ask_professor_domain
+  - action: action_tell_prof_details
+  
+- story: interactive_story_1
+  steps:
+  - intent: ask_professor_domain
+    entities:
+    - prof_name: Vidya Chitre
+  - slot_was_set:
+    - prof_name: Vidya Chitre
+  - action: action_tell_prof_details
+
+- story: interactive_story_1
+  steps:
+  - intent: ask_professor_domain
+    entities:
+    - prof_name: Santosh Tamboli
+  - slot_was_set:
+    - prof_name: Santosh Tamboli
+  - action: action_tell_prof_details
+  - intent: ask_professor_domain
+    entities:
+    - prof_name: Samuel Jacob
+  - action: action_tell_prof_details
+  - intent: ask_time_table
+    entities:
+    - prof_name: bhanu tekwani
+  - slot_was_set:
+    - prof_name: bhanu tekwani
+  - action: action_tell_prof_details
+  
+- story: ask about railway concession
+  steps:
+  - intent: ask_railwayconcession
+  - action: utter_railwayconcession
+
+- story: ask about result
+  steps:
+  - intent: ask_result
+  - action: utter_result
+
+- story: administrative office
+  steps:
+  - intent: ask_administrative_office
+  - action: action_administrative_office
+
+- story: ask courses available
+  steps:
+  - intent: ask_courses_offered
+  - action: action_courses_offered

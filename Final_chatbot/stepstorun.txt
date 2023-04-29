@@ -1,0 +1,3 @@
+rasa train --fixed-model-name va_4.tar.gz
+rasa run actions  
+rasa run --enable-api --model models/va_4.tar.gz --cors "*" -p 5006

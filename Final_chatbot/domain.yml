@@ -1,0 +1,222 @@
+version: '3.1'
+intents:
+- affirm
+- ask_prof_details
+- ask_professor_domain
+- ask_time_table
+- change_information
+- deny
+- goodbye
+- greet
+- tt_inform
+- ask_administrative_office
+- ask_railwayconcession
+- ask_result
+- ask_courses_offered
+entities:
+- subject
+- prof_name
+- d_info
+- sem
+- branch
+- division
+- session_id
+- user_name
+- login_status
+- time
+- day
+- courses
+- office_location
+slots:
+  d_info:
+    type: categorical
+    influence_conversation: false
+    mappings:
+    - type: from_entity
+      entity: d_info
+      not_intent: tt_inform
+      intent: change_information
+  prof_name:
+    type: text
+    influence_conversation: false
+    mappings:
+    - type: from_entity
+      entity: prof_name
+  branch:
+    type: text
+    influence_conversation: true
+    mappings:
+    - type: from_entity
+      entity: branch
+      conditions:
+      - active_loop: time_table_form
+        requested_slot: branch
+  division:
+    type: text
+    influence_conversation: true
+    mappings:
+    - type: from_entity
+      entity: division
+      conditions:
+      - active_loop: time_table_form
+        requested_slot: division
+  sem:
+    type: float
+    influence_conversation: true
+    mappings:
+    - type: from_entity
+      entity: sem
+      conditions:
+      - active_loop: time_table_form
+        requested_slot: sem
+  subject:
+    type: text
+    influence_conversation: false
+    mappings:
+    - type: from_entity
+      entity: subject
+  login_status:
+    type: bool
+    influence_conversation: true
+    mappings:
+    - type: custom
+  user_name:
+    type: text
+    influence_conversation: false
+    mappings:
+    - type: from_entity
+      entity: user_name
+  time:
+    type: text
+    influence_conversation: false
+    mappings:
+    - type: from_entity
+      entity: time
+  day:
+    type: text
+    influence_conversation: false
+    mappings:
+    - type: from_entity
+      entity: day
+  office_location:
+    type: text
+    influence_conversation: false
+    mappings:
+    - type: from_entity
+      entity: office_location
+      intent: ask_administrative_office
+      
+  courses:
+    type: text
+    influence_conversation: false
+    mappings:
+    - type: from_entity
+      entity: courses
+      intent: ask_courses_offered
+
+forms:
+  time_table_form:
+    required_slots:
+    - branch
+    - division
+    - sem
+responses:
+  utter_result:
+  - text:  |-
+      You can visit your Department Office to collect hard copy else visit [website](https://erp.mycollege.edu.in/landingpage.ashx) 
+      Exams -> Transcript -> Transcript Generation 
+  utter_railwayconcession:
+  - text: |-
+      First apply for railway concession on [website](https://erp.mycollege.edu.in/landingpage.ashx) then visit your respective department to collect concession form 
+      My Dashboard -> Apply for Railway Concession
+  utter_greet:
+  - text: I am the Virtual Assistant of VIT. I can help you with anything related to our college.
+  - text: How can I help you?
+  - text: How can I assist you today?
+  - text: Hey! Feel free to ask me anything.
+  utter_did_that_help:
+  - text: Did that help you?
+  utter_happy:
+  - text: Great, carry on!
+  utter_goodbye:
+  - text: Bye
+  utter_iamabot:
+  - text: I am a bot, powered by Rasa.
+  utter_ask_branch:
+  - text: Can you please provide your branch?
+  - text: Can you please tell me your branch?
+  - text: Could you please tell me which branch you belong to?
+  utter_ask_division:
+  - text: Can you please provide your division?
+  - text: Can you please tell me your division?
+  - text: Could you please tell me which division you belong to?
+  utter_ask_sem:
+  - text: Can you please provide your semester?
+  - text: Can you please tell me your semester?
+  - text: Could you please tell me which semester you belong to?
+  utter_details_affirm:
+  - text: |-
+      Confirm if these details are correct Branch is {branch} 
+      Semester is {sem} 
+      Division is {division}
+  utter_courses_offered:
+  - text: |
+      Our college provides 5 Engineering courses and 1 Management course 
+      Engineering Courses 
+        1] [Information Technology](https://vit.edu.in/information-technology.html)
+        2] [Computer Engineering](https://vit.edu.in/computer-engineering.html) 
+        3] [Electronics and Computer Science](https://vit.edu.in/electronics-engineering.html) 
+        4] [Electronics and Telecommunication Engineering](https://vit.edu.in/electronics-telecommunication-engineering.html) 
+        5] [Biomedical Engineering](https://vit.edu.in/biomedical-engineering.html) 
+      Management course
+        1] [Management Studies](https://vit.edu.in/management.html) 
+      
+  utter_tt:
+  - text: '{prof_name} will be teaching {subject} in lecture hall {class_location}'
+  utter_class_available:
+  - text: Class available in block {block_name} is {class_location}
+  utter_professor_subjects:
+  - text: '{subject} is taught by {prof_name}'
+  utter_professor_domain:
+  - text: '{prof_name} e {domain_name}'
+  utter_upcoming_events:
+  - text: 'Ongoing events are: {events}'
+  utter_admininstrative_office_location:
+  - text: '{office_location} is located in room {room_location} block {block_name}'
+  utter_outofscope:
+  - text: Sorry, didn't understand that
+  - text: I'm afraid I can't answer that
+  utter_ask_continue:
+  - text: Are you sure you want to stop the form
+  utter_anything_else:
+  - text: Can I help you with something else.
+  utter_please_login:
+  - text: Please login into this [website](http://localhost/projects/CLG_VA/login.php) to access this information.
+session_config:
+  session_expiration_time: 60
+  carry_over_slots_to_new_session: true
+actions:
+- action_professor_domain
+- action_query_time_table
+- action_say_branch
+- action_say_hello
+- action_tell_prof_details
+- action_time_table
+- action_upload_user_details
+- utter_anything_else
+- utter_ask_branch
+- utter_ask_continue
+- utter_ask_division
+- utter_ask_sem
+- utter_ask_time_table
+- utter_details_affirm
+- utter_goodbye
+- utter_greet
+- utter_please_login
+- utter_submit_tt
+- utter_tt
+- validate_time_table_form
+- action_administrative_office
+- utter_railwayconcession
+- utter_result
+- action_courses_offered
